@@ -8,7 +8,8 @@
     --c_titulo: #d2d2d2c8;
     --c_enlaces: #f5f5f5;
     --c_enlacesFooter: #fff;
-    --c_navhover: rgb(62, 62, 62);
+    --c_bloqueServicio: rgba(24, 24, 24, 0.8);
+    --c_navhover: rgba(76, 75, 75, 0.8);
 
     --f_familyPrimary: 'open sans', sans-serif;
     --f_familySecondary: 'Roboto', sans-serif;
@@ -21,6 +22,8 @@
     color: var(--c_texto);
 }
 
+html {scroll-behavior: smooth;}
+
 body{
     background: radial-gradient(circle at 50% 0%, #ffffff, #5f5e5e);
     line-height: 1.5;
@@ -30,17 +33,20 @@ h1, h2, h3, h4, h5, h6{
     font-family: var(--f_familySecondary);
 }
 
-h2 {font-size: 1.4rem;}
+h2 {font-size: 1.6rem;
+    text-align: center;
+    padding-block: 20px;}
 
 a, button{  text-decoration: none;
     color: var(--c_enlaces);
 }
 
 .abrir-menu{
-    background-color: var(--c_terciario);
+    background-color: var(--c_texto);
     color: var(--c_primario);
-    border: none;
-    padding: 10px 15px;
+    border: 1px solid var(--c_primario);
+    padding: 5px 8px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
@@ -79,13 +85,19 @@ header{background-color: var(--c_secundario);
                     flex-direction: column;
                     gap: 15px;
                 
-                & li{
+                & li{display: grid;
+                     align-items: center;
+                     justify-content: center;
                     
                     & a{
                         padding: 10px 15px;
                         display: block;
                     }
                 }
+
+                & li:hover {background-color: var(--c_navhover);}
+
+
             }
         }
 
@@ -100,7 +112,6 @@ header{background-color: var(--c_secundario);
 /* ------------------------ Aqui empieza el Hero------------------------ */ 
 
 .hero{
-    height: 500px;
     background-image: url(imagenes/bg_Hero1.png);
     background-size: cover;
     background-position: center;
@@ -125,22 +136,24 @@ header{background-color: var(--c_secundario);
 
             & h1 {
                 font-size: 1.4rem;
-                margin-bottom: 15px;
                 line-height: 1.2;
             }
 
             & p {text-align: justify;
                 font-size: 1rem;
+                margin-block: 20px;
             }
 
             & a {font-size: 1.2rem;
                 display: inline-block;
-                margin-top: 20px;
-                padding: 12px 25px;
+                padding: 10px 25px;
                 background-color: var(--c_terciario);
                 color: var(--c_primario);
                 border-radius: 40px;
             }
+
+            & a:hover {background-color: var(--c_secundario);
+                        }
         }
     }
 }
@@ -148,33 +161,59 @@ header{background-color: var(--c_secundario);
 
 /* ------------------------ Aqui empieza el Main------------------------ */ 
 
-.Main{
+.Main{margin-block: 40px;
 
     & .contenedor-wrapper{max-width: 1400px;
                           margin-inline: 6%;
-                          padding-block: 30px;
 
-        & .servicios{
-            margin-top: 50px;
-            text-align: justify;
+        & #portafolio {padding-top: 20px;
+                      overflow: hidden;
 
-                & h2{text-align: center;
-                    margin-bottom: 20px;
-                }
+            & .contenedor-portafolio{border-radius: 10px;
+                        background-image: url(imagenes/bg/bg_portafolio.jpg);
+                        background-size: contain;
+                        background-position: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+
+                & .monitor{
+                    
+                    & img {width: 500px; }}
+
+                & .laptop{
+                    
+                    & img{width: 500px;}}
+
+                & .tablet {
+                    
+                    & img{width: 230px;}}
+
+                & .phone {
+                    
+                    & img{width: 160px;}}
+
+            }
+        }
+
+        & #servicios{padding-block: 20px;
+                     text-align: justify;
+                     overflow: hidden;
 
                 & p{
                     font-size: 1rem;  
-                    margin-bottom: 30px;
                 }
 
                 & .bloques-servicios{
                     display: flex;
-                    justify-content: space-between;
+                    justify-content: flex-start;
                     flex-wrap: wrap;
-                    gap: 20px;
+                    gap: 6%;
 
-                    & .servicio{width: 45%;
+                    & .servicio{width: 47%;
                         height: 170px;
+                        margin-top: 1.5rem;
                         border: 1px solid var(--c_secundario);
                         border-radius: 8px;
                         display: flex;
@@ -187,22 +226,25 @@ header{background-color: var(--c_secundario);
                             text-align: center;
                             font-size: 1rem;
                             padding-top: 1rem;
-                            color: var(--c_titulo);
+                            color: var(--c_primario);
                             background-color: rgba(0, 0, 0, 0.5);
                         }
+
+                        & h3:hover {background-color: var(--c_bloqueServicio);}
                     }
 
-                    & .servicio:first-child {background-image: url(https://www.shutterstock.com/shutterstock/photos/1875405226/display_1500/stock-photo-designer-development-ux-graphic-prototype-application-1875405226.jpg);}
-                    & .servicio:nth-child(2) {background-image: url(https://www.shutterstock.com/shutterstock/photos/2413070859/display_1500/stock-vector--d-render-isometric-developing-app-developer-mobile-system-application-software-development-2413070859.jpg);}
+                    & .servicio:first-child {background-image: url(./imagenes/bg/bg_page.jpg);}
+                    & .servicio:nth-child(2) {background-image: url(./imagenes/bg/bg_landing.jpg);}
+                    & .servicio:nth-child(3) {background-image: url(./imagenes/bg/bg_hosting.jpg);}
+                    & .servicio:nth-child(4) {background-image: url(./imagenes/bg/bg_shield.jpg);}
+                    & .servicio:nth-child(5) {background-image: url(./imagenes/bg/bg_seo.jpg);}
+                    & .servicio:last-child {background-image: url(./imagenes/bg/bg_marketing.jpg);}
 
                 }
         }
 
-        & .precios-paquetes {margin-top: 40px;
+        & #precios-paquetes {padding-block: 20px;
 
-            & h2 {text-align: center;
-                    margin-bottom: 20px;
-            }
 
             & p {text-align: center;
                     margin-bottom: 20px;
@@ -244,6 +286,8 @@ header{background-color: var(--c_secundario);
                             color: var(--c_primario);
                             border-radius: 40px;
                     }
+
+                    & a:hover {background-color: var(--c_secundario);}
                 }
             }
 
@@ -251,16 +295,14 @@ header{background-color: var(--c_secundario);
         }
 
 
-        & .certificados {padding-block: 2rem;
+        & #certificados {padding-top: 20px;
 
-            & h2 {text-align: center;
-                    margin: 20px 0 20px 0;
-            }
 
             & .bloques-certificados {display: flex;
                                     justify-content: space-evenly;
                                     flex-wrap: wrap;
                                     gap: 20px;
+                                    padding-block: 20px;
 
                 & figure{max-width: 320px;
 
@@ -335,10 +377,10 @@ header{background-color: var(--c_secundario);
             & .footer-links {list-style-type: none;
 
                 & li {padding-block: 6px;
-
-                    & a {font-size: 0.85rem;
+                        font-size: 0.85rem;
                         color: #fff;
-                         }
+
+                    & a {}
 
                     & a:hover {color: var(--c_terciario);}
 
@@ -402,13 +444,8 @@ header{background-color: var(--c_secundario);
 
                     & li {height: 55px;
                         width: 100px;
-                        display: grid;
-                        align-items: center;
-                        justify-content: center;
+                        
                     }
-
-                    & li:hover {background-color: var(--c_navhover);}
-                
                 }
             }
         }
@@ -435,13 +472,65 @@ header{background-color: var(--c_secundario);
 
         & .contenedor-wrapper{padding-block: 0;
 
-            & .servicios{margin-top: 0; 
+            & #portafolio {
+
+                    /* Grid proporcional para .contenedor-portafolio en 680px–980px */
+                    & .contenedor-portafolio {
+                        display: grid;
+                        grid-template-columns: repeat(8, 1fr);
+                        grid-template-rows: repeat(6, 1fr);
+                        gap: 12px;
+                        height: 480px; /* ajustar si quieres más/menos altura */
+
+                        /* Monitor: ocupa mayor parte izquierda-superior */
+                        & .monitor {
+                            grid-column: 4 / 9;
+                            grid-row: 4 / 8;
+                            align-self: start;
+                            z-index: 11;
+                            & img { width: 100%; height: auto; display: block; }
+                        }
+
+                        /* Laptop: parcialmente superpuesta al monitor */
+                        & .laptop {
+                            grid-column: 2 / 7;
+                            grid-row: 3 / 7;
+                            align-self: center;
+                            & img { width: 100%; height: auto; display: block; }
+                        }
+
+                        /* Tablet: derecha superior */
+                        & .tablet {
+                            grid-column: 5 / 9;
+                            grid-row: 2 / 6;
+                            align-self: center;
+                            & img { width: 100%;; height: auto; display: block; }
+                        }
+
+                        /* Phone: derecha inferior */
+                        & .phone {
+                            grid-column: 1/ 4;
+                            grid-row: 4 / 7;
+                            align-self: end;
+                            z-index: 20;
+                            & img { width: 100%;; max-height: 490px; display: block; }
+                        }
+                    }
+            }
+
+            & #servicios{margin-top: 0; 
+
+                & .bloques-servicios {
+
+                    & .servicio{
+                                height: 250px;
+                    }
+                }
             
-                & h2 {font-size: 1.8rem;}
             }
 
 
-            & .certificados{
+            & #certificados{
 
                 & .bloques-certificados{
 
@@ -525,9 +614,6 @@ header{background-color: var(--c_secundario);
                         align-items: center;
                         justify-content: center;
                     }
-
-                    & li:hover {background-color: var(--c_navhover);}
-
                 }
             }
         }
@@ -543,6 +629,8 @@ header{background-color: var(--c_secundario);
                 
                 & img{ width: 350px;}
             }   
+
+            & .texto-hero {max-width: 555px}
     
         }
     }
@@ -553,14 +641,71 @@ header{background-color: var(--c_secundario);
 
         & .contenedor-wrapper{padding-block: 0;
 
-            & .servicios{margin-top: 0;
-            
-                & h2{font-size: 1.8rem;}
+            & #portafolio {
 
-                & p{text-align: center;}
+                    & .contenedor-portafolio {
+                        display: grid;
+                        grid-template-columns: repeat(12, 1fr);
+                        grid-template-rows: repeat(10, 1fr);
+                        gap: 20px;   /*revisar en mobile y tablet*/
+                        height: 530px;
+
+                        & .monitor {
+                            grid-column: 4 / 13;
+                            grid-row: 3/ 7;
+                            align-self: start;
+                            & img {
+                                width: 750px;
+                                height: auto;
+                            }
+                        }
+
+                        & .laptop {
+                            grid-column: 1 / 6;
+                            grid-row: 5 / 9;
+                            align-self: center;
+                            z-index: 10;
+                            & img {
+                                width: 500px;
+                                height: auto;
+                            }
+                        }
+
+                        & .tablet {
+                            grid-column: 10 / 13;
+                            grid-row: 4 / 11;
+                            align-self: center;
+                            & img {
+                                width: 250px;
+                                height: auto;
+                            }
+                        }
+
+                        & .phone {
+                            grid-column: 5 / 8;
+                            grid-row: 4 / 8;
+                            align-self: end;
+                            z-index: 1;
+                            & img {width: 200px;
+                                height: auto;
+                            }
+                        }
+                    }
             }
 
-            & .certificados{
+            & #servicios{margin-top: 0;
+
+                & p{text-align: center;}
+
+                & .bloques-servicios{gap: 2%;
+
+                    & .servicio{width: 32%;
+                                height: 220px;
+                    }
+                }
+            }
+
+            & #certificados{
 
                 & .bloques-certificados{
 
