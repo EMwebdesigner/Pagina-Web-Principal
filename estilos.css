@@ -4,6 +4,7 @@
     --c_primario: #fff;
     --c_secundario: rgba(0, 0, 0, 0.9);
     --c_terciario: #004aad; 
+    --c_texto-hero: rgba(255, 255, 255, 0.9);
     --c_texto: #333333;
     --c_titulo: #d2d2d2c8;
     --c_enlaces: #f5f5f5;
@@ -33,9 +34,11 @@ h1, h2, h3, h4, h5, h6{
     font-family: var(--f_familySecondary);
 }
 
-h2 {font-size: 1.6rem;
+h2 {font-size: 1.8rem;
     text-align: center;
-    padding-block: 20px;}
+    padding-block: 20px 0px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--c_bloqueServicio);}
 
 a, button{  text-decoration: none;
     color: var(--c_enlaces);
@@ -115,6 +118,7 @@ header{background-color: var(--c_secundario);
     background-image: url(imagenes/bg_Hero1.png);
     background-size: cover;
     background-position: center;
+    overflow: hidden;  /*animacion-hero*/
 
     & .contenedor-wrapper{max-width: 1400px;
                           margin-inline: 6%;
@@ -124,15 +128,37 @@ header{background-color: var(--c_secundario);
                           align-items: center;
                           justify-content: center;
 
-        & .imagen-hero {
+        & .imagen-hero {opacity: 0;  /*animacion-hero*/
+                        transform: translateX(-100px); /*animacion-hero*/
+                        transition: all 0.8s ease-out; /*animacion-hero*/
 
             & img {
                 width: 256px;
             }
         }
 
-        & .texto-hero {
-            text-align: center;
+        & .imagen-hero.animate {
+                            opacity: 1;
+                            transform: translateX(0);
+            }
+
+        & .texto-hero.animate {
+                            opacity: 1;
+                            transform: translateX(0);
+                            transition-delay: 0.3s;
+        }
+
+
+
+        & .texto-hero {background-color: var(--c_texto-hero);
+                        text-align: center;
+                        margin-top: 40px;
+                        padding: 30px 20px;
+                        border-radius: 10px;
+                        opacity: 0;  /*animacion-hero*/
+                        transform: translateX(-100px); /*animacion-hero*/
+                        transition: all 0.8s ease-out; /*animacion-hero*/
+
 
             & h1 {
                 font-size: 1.4rem;
@@ -197,7 +223,7 @@ header{background-color: var(--c_secundario);
             }
         }
 
-        & #servicios{padding-block: 20px;
+        & #servicios{padding-block: 40px 20px;
                      text-align: justify;
                      overflow: hidden;
 
@@ -246,7 +272,7 @@ header{background-color: var(--c_secundario);
         & #precios-paquetes {padding-block: 20px;
 
 
-            & p {text-align: center;
+            & .subtitulo-paquetes {text-align: center;
                     margin-bottom: 20px;
             }
 
@@ -258,40 +284,52 @@ header{background-color: var(--c_secundario);
                 & .paquete{border: 1px solid var(--c_secundario);
                             border-radius: 8px;
                             padding: 20px;
+                            margin-top: 20px;
                             width: 300px;
                             background-color: var(--c_primario);
                             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
 
-                    & h3 {text-align: center;
-                            margin-bottom: 15px;
-                    }
+                    
+                    & .contenido-paquete {
 
-                    & ul {list-style-type: disc;
-                            margin-left: 20px;
-                            margin-bottom: 15px;
+                            & h3 {text-align: center;
+                            }
 
-                        & li {margin-bottom: 8px;}
-                    }
+                            & .precio {font-size: 1.2rem;
+                                        font-weight: bold;
+                                        text-align: center;
+                                        padding-block: 0.6rem 1rem;
+                            }
 
-                    & .precio {font-size: 1.5rem;
-                                font-weight: bold;
-                                text-align: center;
-                                margin-bottom: 15px;
+
+                            & ul {list-style-type: disc;
+                                    margin-left: 20px;
+
+
+                                & li {margin-bottom: 8px;
+                                    font-size: 0.9rem;}
+                            }
+
+                            & .mtto {text-align: center;
+                                    font-size: 0.9rem;
+                                    padding-block: 1rem;}
+
                     }
 
                     & a {display: block;
-                            text-align: center;
-                            padding: 10px 15px;
-                            background-color: var(--c_terciario);
-                            color: var(--c_primario);
-                            border-radius: 40px;
+                                    text-align: center;
+                                    padding: 10px 15px;
+                                    background-color: var(--c_terciario);
+                                    color: var(--c_primario);
+                                    border-radius: 40px;
                     }
 
                     & a:hover {background-color: var(--c_secundario);}
                 }
             }
-
-
         }
 
 
@@ -356,10 +394,21 @@ header{background-color: var(--c_secundario);
 
                 & a:nth-child(3){
 
-                    & svg:hover {fill: rgb(67, 199, 67);} /* WhatsApp */
+                    & svg:hover {fill: #38D956;} /* WhatsApp */
 
                 }
 
+                & a:nth-child(4){
+
+                    & svg:hover {fill: rgb(115, 114, 114);} /* GitHub */
+
+                }
+
+                & a:nth-child(5){
+
+                    & svg:hover {fill: #27C8B9} /* Netlify */
+
+                }
     
                 & a:nth-child(2){position: relative;
                                   top: 5px;}
@@ -380,7 +429,6 @@ header{background-color: var(--c_secundario);
                         font-size: 0.85rem;
                         color: #fff;
 
-                    & a {}
 
                     & a:hover {color: var(--c_terciario);}
 
